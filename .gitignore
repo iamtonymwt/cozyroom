@@ -1,2 +1,4 @@
-api_key.py
+.env
 __pycache__
+.chroma
+.DS_Store
