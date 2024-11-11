@@ -4,13 +4,12 @@ import streamlit as st
 import os
 import openai
 from openai import OpenAI
-from dotenv import load_dotenv
 
-load_dotenv()
-openai_api_key = os.getenv('OPENAI_API_KEY')
+from key import OPENAI_API_KEY
 
-client = OpenAI(api_key=openai_api_key)
-openai.api_key = openai_api_key
+os.environ["OPENAI_API_KEY"] =  OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY)
+openai.api_key = OPENAI_API_KEY
 
 def speech_to_text(audio_data):
     with open(audio_data, "rb") as audio_file:

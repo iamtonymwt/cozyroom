@@ -3,7 +3,6 @@ from glob import glob
 
 import openai
 from openai import OpenAI
-from dotenv import load_dotenv
 
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
@@ -13,12 +12,12 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import RetrievalQA
 from langchain.memory import ConversationBufferMemory
 
+from key import OPENAI_API_KEY
 
-load_dotenv()
-openai_api_key = os.getenv('OPENAI_API_KEY')
+os.environ["OPENAI_API_KEY"] =  OPENAI_API_KEY
 
-client = OpenAI(api_key=openai_api_key)
-openai.api_key = openai_api_key
+client = OpenAI(api_key=OPENAI_API_KEY)
+openai.api_key = OPENAI_API_KEY
 
 
 SYSTEM_PROMPT = "You are a student stress relief assistant. Your goal is to use your own words and stories to keep chatting with the user and help them feel better. You have to remember these chatting paradigms and generate your words:\n1. Active Listening: Encourage individuals to express their emotions without judgment, and offer validation by reflecting back on what they are saying to show empathy.\n2. The experience and effects of emotional support: Use empathetic communication, gentle reassurance, and emotional validation when offering support to someone stressed.\n3. Peer support: Make yourself a supportive peer, emphasizing shared experiences to create emotional bonds that help reduce stress."
@@ -76,12 +75,12 @@ class ConversationalRetrievalChain:
             return_messages=True
             )
         vector_db = VectorDB('docs/')
-        # retriever = vector_db.create_vector_db().as_retriever(search_type="similarity",
-        #                                                       search_kwargs={"k": 2},
-        #                                                       )
-        retriever = vector_db.create_vector_db().as_retriever(search_type="similarity_score_threshold",
-                                                              search_kwargs={'score_threshold': 0.2},
+        retriever = vector_db.create_vector_db().as_retriever(search_type="similarity",
+                                                              search_kwargs={"k": 2},
                                                               )
+        # retriever = vector_db.create_vector_db().as_retriever(search_type="similarity_score_threshold",
+        #                                                       search_kwargs={'score_threshold': 0.2},
+        #                                                       )
 
         return RetrievalQA.from_chain_type(
             llm=model,

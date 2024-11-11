@@ -13,11 +13,10 @@
 - Necessary Packages
 
 ## Streamlit Usage
-Having done the previous steps, it's time to chat. Follow the following steps, please.
 
-1. create a **.env** file and paste there your *OPENAI_API_KEY*. The content of the **.env** should be identical to:
+1. create a **key.py** file and paste there your *OPENAI_API_KEY*. The content of the **.env** should be identical to:
     ```py
-    OPENAI_API_KEY=sk-xxxx
+    OPENAI_API_KEY='sk-xxxx'
     ```
 
 

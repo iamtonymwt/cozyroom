@@ -1,4 +1,4 @@
-.env
+key.py
 __pycache__
 .chroma
 .DS_Store
