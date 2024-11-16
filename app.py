@@ -14,7 +14,7 @@ def main():
     def initialize_session_state():
         if "messages" not in st.session_state:
             st.session_state.messages = [
-                {"role": "assistant", "content": "Hi there, welcome to the CozyRoom, chat with me about any thing you are worrying about"}
+                {"role": "assistant", "content": "Hi there, welcome to the CozyRoom, chat with me about anything you are worrying about"}
             ]
         if "button_flag" not in st.session_state:
             st.session_state.button_flag = False
@@ -38,9 +38,18 @@ def main():
             )
         with col2:
             new_button_flag = st.toggle("Ask for specific info")
+
+            # avoid repeat display && example prompts
             if new_button_flag != st.session_state.button_flag:
                 st.session_state.audio_bytes = None
+                # accurate info mode
+                if new_button_flag:
+                    st.write("[Specific Info Mode] You can ask me about the specific information you want to know. E.g. 'What is the mental health service number for the New York city?'")
+                # general chat mode
+                else:
+                    st.write("[General Chat Mode] You can chat with me about anything you are worrying about. E.g. 'I feel so stressed out today.'")
             st.session_state.button_flag = new_button_flag
+
 
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
