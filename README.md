@@ -32,8 +32,6 @@ CSC 2526 Project By Angela and Tony @ UofT
     ```
 
 ## Demo Usage:
-<div align="center">
-  <video controls width="600">
-    <source src="assets/app.mp4" type="video/mp4">
-  </video>
-</div>
+```
+assets/app.mp4
+```
