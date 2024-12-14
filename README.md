@@ -4,9 +4,7 @@ A Psychological Guidance and RAG based Chatbot
 CSC 2526 Project By Angela and Tony @ UofT
 
 ## Explannation Video:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Tc8CNeqy3yo" 
-frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+[![Watch the video](assets/video.png)](https://www.youtube.com/watch?v=Tc8CNeqy3yo)
 
 
 ## System Overview:
@@ -32,3 +30,10 @@ allowfullscreen></iframe>
     ```py
     streamlit run app.py
     ```
+
+## Demo Usage:
+<div align="center">
+  <video controls width="600">
+    <source src="assets/app.mp4" type="video/mp4">
+  </video>
+</div>
