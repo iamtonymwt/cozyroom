@@ -78,12 +78,12 @@ def main():
                 elif st.session_state.button_flag:
                     print('--------->', st.session_state.messages)
                     final_response = with_pdf_chatbot(st.session_state.messages)
-            # with st.spinner("Generating audio response..."):
-            #     audio_file = text_to_speech(final_response)
-            #     autoplay_audio(audio_file)
+            with st.spinner("Generating audio response..."):
+                audio_file = text_to_speech(final_response)
+                autoplay_audio(audio_file)
             st.write(final_response)
             st.session_state.messages.append({"role": "assistant", "content": final_response})
-            # os.remove(audio_file)
+            os.remove(audio_file)
 
     # Float the footer container and provide CSS to target it with
     footer_container.float("bottom: 0rem;")
